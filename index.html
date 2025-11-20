@@ -1,104 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Worker Management</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  </head>
+  <body>
     <main>
-    <header>
-        <img src="img\Design sans titre.webp" alt="Logo">
+      <header>
+        <img src="img/Design sans titre.webp" alt="Logo">
         <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">About Us</a></li>
-            </ul>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About Us</a></li>
+          </ul>
         </nav>
-    </header>
-    <section class="main-section">
-    <aside id="worker-bar">
-        <h1>Unassigned Staff</h1>
-        <button id="add-worker-unass" class="add-worker-unass" type="button">+ Add New Worker</button>
-        <div class="employee-lis">
-            <div class="employer-cards">
-                <img class="worker-img" src="img/young-bearded-man-with-striped-shirt.webp" alt="Derector" loading="lazy">
-                <div class="employee-cpec">
-                    <h5 class="worker-name">MOMO</h5>
-                    <p class="worker-job">Receptionist</p>
-                </div>
-            </div>
-            <div class="employer-cards">
-                <img class="worker-img" src="img/handsome-bearded-businessman-rubbing-hands-having-deal.webp" alt="Recepsionest">
-                <div class="employee-cpec">
-                    <h5  class="worker-name">Mohamed</h5>
-                    <p class="worker-job">Manager</p>
-                </div>
-            </div>
+      </header>
+      <section class="main-section">
+        <aside id="worker-bar">
+          <h1>Unassigned Staff</h1>
+          <button id="add-worker-unass" class="add-worker-unass" type="button">
+            + Add New Worker
+          </button>
+          <div class="employee-lis"></div>
+        </aside>
+        <form id="form-add-worker">
+          <h3>Add a Worker</h3>
+
+          <div>
+            <label for="image-preview">Entrer Photos url</label>
+            <input
+              type="text"
+              id="image-preview"
+              placeholder="entrer votre image url">
+          </div>
+          <div>
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="veuiller entrer votre name"
+            >
+          </div>
+          <div>
+            <label for="Role">Select Your Role</label>
+            <select name="Role" id="Role" required>
+              <option value="0" selected disabled>Select Role</option>
+              <option value="1">Réceptionniste</option>
+              <option value="2">Technicien IT</option>
+              <option value="3">Agent de sécurité</option>
+              <option value="4">Manager</option>
+              <option value="5">Nettoyage</option>
+              <option value="6">Unassigned Staff</option>
+            </select>
+          </div>
+          <div>
+            <label for="email">Entrer votre email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="........@.....com"
+              required
+            >
+          </div>
+          <div>
+            <label for="worker-num">Entrer votre numéro</label>
+            <input
+              id="worker-num"
+              type="text"
+              placeholder="+2126............... "
+              required
+            >
+          </div>
+          <div id="experience-list">
+            <h3>Entrer votre experience</h3>
+          </div>
+          <div class="botton-form">
+            <button type="button" id="experience-button">
+              Ajouter l'experience
+            </button>
+            <button type="submit" id="add-worker">Add Worker</button>
+            <button type="button" id="close-formule">Fermer</button>
+          </div>
+        </form>
+        <div class="modal-overlay" id="modal-overlay">
+          <div class="worker-modal" id="worker-card-div"></div>
         </div>
-    </aside>
-    <form id="form-add-worker" action="#">
-        <h3>Add a Worker</h3>
-        <div><label for="image-preview">Entrer Photos url</label>
-        <input type="text" id="image-preview" placeholder="entrer votre image url"></div>
-        <div class="image-preview"></div>
-        <div><label for="name">Name</label>
-        <input type="text" id="name" placeholder="veuiller entrer votre name"></div>
-        <div><label for="Role">Select Your Role</label>
-        <select name="Role" id="Role" required>
-            <option value="0" selected disabled>Select Role</option>
-            <option value="1">Réceptionniste</option>
-            <option value="2">Technicien IT</option>
-            <option value="3">Agent de sécurité</option>
-            <option value="4">Manager</option>
-            <option value="5">Nettoyage</option>
-            <option value="6">Unassigned Staff</option>
-        </select></div>
-      <div>  <label for="email">Entrer votre email</label>
-        <input id="email" type="email" placeholder="........@.....com" required></div>
-        <div> <label for="email">Entrer votre email</label>
-        <input id="worker-num" type="text" placeholder="+2126..............." required></div>
-        <div id="experience-list">
-            <h3>entrer votre experience</h3>
-        </div>
-            <div class="botton-form">
-                <button type="button" id="experience-button">Ajouter l'experience</button>
-                <button type="submit" id="add-worker">Add Worker</button>
-                <button type="button" id="close-formule">Fermer</button>
-            </div>
-    </form>
-    <section id="zone-section" class="zone-section">
-        <div class="zone">
+        <section id="zone-section" class="zone-section">
+          <div class="zone">
             <h3>Salle de conférence</h3>
             <button class="assign-worker" type="button">+</button>
-        </div>
-        <div class="zone">
+          </div>
+          <div class="zone">
             <h3>Réception</h3>
             <button class="assign-worker" type="button">+</button>
-        </div>
-        <div class="zone">
+          </div>
+          <div class="zone">
             <h3>Salle des serveurs</h3>
             <button class="assign-worker" type="button">+</button>
-        </div>
-        <div class="zone">
+          </div>
+          <div class="zone">
             <h3>Salle de sécurité</h3>
             <button class="assign-worker" type="button">+</button>
-        </div>
-        <div class="zone">
+          </div>
+          <div class="zone">
             <h3>Salle du personnel</h3>
             <button class="assign-worker" type="button">+</button>
-        </div>
-        <div class="zone">
+          </div>
+          <div class="zone">
             <h3>Salle d’archives</h3>
             <button class="assign-worker" type="button">+</button>
-        </div>
-    </section>
-    </section>
+          </div>
+        </section>
+      </section>
     </main>
+
     <footer>
-        <p>© 2025WorkSphare. All rights reserved. Crafted with ❤️ by WorkSphare.</p>
+      <p>
+        © 2025WorkSphare. All rights reserved. Crafted with ❤️ by WorkSphare.
+      </p>
     </footer>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
