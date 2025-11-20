@@ -403,3 +403,31 @@ form > div > label{
     color: #555;
     margin: 3px 0;
 }
+.zone-worker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.zone-worker:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.zone-worker img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.zone-worker .worker-name {
+  font-weight: bold;
+  font-size: 14px;
+}
