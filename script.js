@@ -124,7 +124,6 @@ function updateZonesAppearance() {
       const max = limits[zoneName] || 3;
       limitElement.textContent = `${currentWorkers} / ${max}`;
       
-      // Capacité
       if (currentWorkers >= max) {
         zone.classList.add('at-capacity');
       }
@@ -132,7 +131,7 @@ function updateZonesAppearance() {
   });
 }
 
-/*
+
 function showModal(worker_info, experience) {
   let experienceHTML = '';
   if(experience.length > 0) {
@@ -286,4 +285,4 @@ document.addEventListener("keydown", e => {
 });
 
 
-updateZonesAppearance();*/
+updateZonesAppearance();
