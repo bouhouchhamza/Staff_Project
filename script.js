@@ -79,7 +79,7 @@ function canAssignToZone(workerRole, zoneName) {
   }
 }
 
-/*
+
 function isZoneFull(zoneElement) {
   const currentWorkers = zoneElement.querySelectorAll('.employer-cards').length;
   const zoneName = zoneElement.querySelector('h3').textContent;
@@ -132,7 +132,7 @@ function updateZonesAppearance() {
   });
 }
 
-
+/*
 function showModal(worker_info, experience) {
   let experienceHTML = '';
   if(experience.length > 0) {
