@@ -132,7 +132,7 @@ function updateZonesAppearance() {
   });
 }
 
-/*
+
 function showModal(worker_info, experience) {
   let experienceHTML = '';
   if(experience.length > 0) {
@@ -230,7 +230,7 @@ add_worker_info.addEventListener("click", (e) => {
     side_bar_list.appendChild(card);
     updateZonesAppearance();
   });
-
+/*
   card.addEventListener("click", () => showModal(worker_info, experience));
 
 
