@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Worker Management</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
       <header>
-        <img src="img/Design sans titre.webp" alt="Logo">
+        <img src="img/Design sans titre.webp" alt="Logo" />
         <nav>
           <ul>
             <li><a href="">Home</a></li>
@@ -17,31 +17,39 @@
           </ul>
         </nav>
       </header>
+
       <section class="main-section">
         <aside id="worker-bar">
           <h1>Unassigned Staff</h1>
+
           <button id="add-worker-unass" class="add-worker-unass" type="button">
             + Add New Worker
           </button>
+
           <div class="employee-lis"></div>
         </aside>
+
         <form id="form-add-worker">
           <h3>Add a Worker</h3>
+
           <div>
             <label for="image-preview">Entrer Photos url</label>
             <input
               type="text"
               id="image-preview"
-              placeholder="entrer votre image url">
+              placeholder="entrer votre image url"
+            />
           </div>
+
           <div>
             <label for="name">Name</label>
             <input
               type="text"
               id="name"
               placeholder="veuiller entrer votre name"
-            >
+            />
           </div>
+
           <div>
             <label for="Role">Select Your Role</label>
             <select name="Role" id="Role" required>
@@ -54,6 +62,7 @@
               <option value="6">Unassigned Staff</option>
             </select>
           </div>
+
           <div>
             <label for="email">Entrer votre email</label>
             <input
@@ -61,8 +70,9 @@
               type="email"
               placeholder="........@.....com"
               required
-            >
+            />
           </div>
+
           <div>
             <label for="worker-num">Entrer votre numéro</label>
             <input
@@ -70,11 +80,13 @@
               type="text"
               placeholder="+2126............... "
               required
-            >
+            />
           </div>
+
           <div id="experience-list">
             <h3>Entrer votre experience</h3>
           </div>
+
           <div class="botton-form">
             <button type="button" id="experience-button">
               Ajouter l'experience
@@ -84,31 +96,74 @@
           </div>
         </form>
         <div class="modal-overlay" id="modal-overlay">
-          <div class="worker-modal" id="worker-card-div"></div>
+          <div class="worker-modal" id="worker-card-div">
+            <div class="profile-details">
+              <p><strong>Name:</strong> <span id="profile-name"></span></p>
+              <p><strong>Role:</strong> <span id="profile-role"></span></p>
+              <p><strong>Email:</strong> <span id="profile-email"></span></p>
+              <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+
+              <h4>Experience:</h4>
+              <ul id="profile-experience"></ul>
+            </div>
+          </div>
         </div>
+
         <section id="zone-section" class="zone-section">
-          <div class="zone" data-role="All">
+
+          <div class="zone" data-allowed-roles="all" data-max="3">
             <h3>Salle de conférence</h3>
+            <div class="zone-limit">0 / 3</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-          <div class="zone" data-role="Réceptionniste">
+
+
+          <div
+            class="zone required-zone"
+            data-allowed-roles="Réceptionniste"
+            data-max="1"
+          >
             <h3>Réception</h3>
+            <div class="zone-limit">0 / 1</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-          <div class="zone" data-role="Technicien IT">
+
+
+          <div
+            class="zone required-zone"
+            data-allowed-roles="Technicien IT"
+            data-max="2"
+          >
             <h3>Salle des serveurs</h3>
+            <div class="zone-limit">0 / 2</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-          <div class="zone" data-role="Agent de sécurité">
+
+
+          <div
+            class="zone required-zone"
+            data-allowed-roles="Agent de sécurité"
+            data-max="2"
+          >
             <h3>Salle de sécurité</h3>
+            <div class="zone-limit">0 / 2</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-          <div class="zone" data-role="Manager">
+
+
+          <div class="zone" data-allowed-roles="all" data-max="4">
             <h3>Salle du personnel</h3>
+            <div class="zone-limit">0 / 4</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-          <div class="zone" data-role="Nettoyage">
-            <h3>Salle d’archives</h3>
+
+          <div
+            class="zone required-zone"
+            data-allowed-roles="all except Nettoyage"
+            data-max="2"
+          >
+            <h3>Salle d'archives</h3>
+            <div class="zone-limit">0 / 2</div>
             <button class="assign-worker" type="button">+</button>
           </div>
         </section>
@@ -117,7 +172,7 @@
 
     <footer>
       <p>
-        © 2025WorkSphare. All rights reserved. Crafted with ❤️ by WorkSphare.
+        © 2025 WorkSphare. All rights reserved. Crafted with ❤️ by WorkSphare.
       </p>
     </footer>
 
