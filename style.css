@@ -72,6 +72,8 @@ aside{
     font-size: 16px;
     font-weight: 900;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .add-worker-unass:hover{
@@ -89,7 +91,6 @@ aside{
     padding-bottom: 20px;
 }
 
-
 .employer-cards{
     display: flex;
     align-items: center;
@@ -100,6 +101,7 @@ aside{
     padding: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .employer-cards:hover{
@@ -131,7 +133,6 @@ aside{
     color: #4B5563;
 }
 
-/* ZONES */
 .zone-section{
     display: grid;
     width: 100%;
@@ -152,6 +153,9 @@ aside{
     justify-content: space-between;
     padding: 20px;
     border-radius: 20px;
+    min-height: 200px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .assign-worker{
@@ -164,13 +168,81 @@ aside{
     background-color: #10B981;
     color: white;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .assign-worker:hover{
-    box-shadow: 0 0 5px rgb(0,0,0,0.8),
-                0 0 10px rgb(0,0,0,0.5),
-                0 0 15px rgb(0,0,0,0.4);
+    box-shadow: 0 0 5px rgba(0,0,0,0.8),
+                0 0 10px rgba(0,0,0,0.5),
+                0 0 15px rgba(0,0,0,0.4);
     transform: scale(1.05);
+}
+
+.required-zone:empty {
+    background-color: #fee2e2 !important;
+    border: 2px dashed #ef4444 !important;
+    animation: pulse-empty 2s infinite;
+}
+
+@keyframes pulse-empty {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.zone.at-capacity {
+    background-color: #fef3c7 !important;
+    border: 2px solid #f59e0b !important;
+}
+
+.zone.over-capacity {
+    background-color: #fee2e2 !important;
+    border: 2px solid #ef4444 !important;
+}
+
+.zone-limit {
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 15px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.zone.at-capacity .zone-limit {
+    background: #f59e0b;
+    color: white;
+}
+
+.zone.over-capacity .zone-limit {
+    background: #ef4444;
+    color: white;
+}
+
+.remove-worker {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.remove-worker:hover {
+    background: #dc2626;
+    transform: scale(1.1);
 }
 
 footer{
@@ -185,86 +257,296 @@ footer{
     color: #E5E7EB;
 }
 
-@media(max-width:786px){
-
-    main{
-        display: flex;
+@media (max-width: 1023px) {
+    .main-section {
         flex-direction: column;
+        height: auto;
     }
 
-    header{
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+    aside {
         width: 100%;
-        gap: 10px;
-        font-size: 10px;
+        height: auto;
+        min-height: 300px;
+        max-height: 400px;
     }
 
-    header img{
-        width: 40%;
-        border-radius: 60px;
-        height: 80px;
+    .zone-section {
+        padding: 40px 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
-    header ul{
-        width: 100%;
+    header {
+        padding: 15px;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    header ul {
         padding-right: 0;
+        gap: 20px;
     }
 
-    header ul li a{
-        width: 100%;
-        height: 100%;
-        font: 1.2rem;
+    header img {
+        width: 120px;
     }
 
-    aside{
-        width:100%;
-        height: 100%;
-        padding: 0;
+    form {
+        width: 70% !important;
+        right: 15% !important;
+        top: 5%;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
-    aside h1{
-        font-size: 26px;
-        padding: 10px;
+    .employee-lis {
+        width: 90%;
     }
 
-    .add-worker-unass{
+    .employer-cards {
+        padding: 12px;
+    }
+
+    .worker-img {
+        width: 60px;
         height: 60px;
-    }
-
-    .zone-section{
-        display: grid;
-        padding: 10px;
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .zone{
-        width: 100%;
-        height: 100%;
-        gap: 30px;
-    }
-
-    form{
-        width: 50vh !important;
-        right: 10% !important;
-    }
-
-    .exp-block input{
-        width: 184.8px !important;
-    }
-
-    .exp-block textarea{
-        width: 184.8px !important;
-    }
-
-    .exp-block{
-        width: 100%;
-        padding-right:60px !important;
     }
 }
 
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    header ul {
+        padding-right: 0;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    header ul a {
+        font-size: 16px;
+    }
+
+    header img {
+        width: 100px;
+        height: 60px;
+    }
+
+    .main-section {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        max-height: 350px;
+        padding: 15px 0;
+    }
+
+    aside h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .add-worker-unass {
+        width: 80%;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .zone-section {
+        padding: 20px 15px;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .zone {
+        min-height: 150px;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .zone h3 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .zone-limit {
+        font-size: 0.8rem;
+        padding: 3px 10px;
+    }
+
+    .assign-worker {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    form {
+        width: 95% !important;
+        right: 2.5% !important;
+        left: 2.5% !important;
+        top: 2%;
+        border-radius: 20px;
+        padding: 20px;
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+
+    form div {
+        width: 90%;
+        padding: 0.5rem 0 0 5%;
+    }
+
+    form > div > input,
+    form > div > select {
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .botton-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .botton-form button {
+        width: 100%;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .exp-block {
+        padding: 10px;
+        padding-right: 40px !important;
+    }
+
+    .exp-block input,
+    .exp-block textarea {
+        width: 100% !important;
+        font-size: 14px;
+    }
+
+    .exp-block textarea {
+        height: 60px;
+    }
+
+    .employee-lis {
+        width: 95%;
+        gap: 15px;
+    }
+
+    .employer-cards {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .worker-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .worker-name {
+        font-size: 1rem;
+    }
+
+    .worker-job {
+        font-size: 0.8rem;
+    }
+
+    .worker-modal {
+        width: 90%;
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .worker-card-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .worker-card-name {
+        font-size: 16px;
+    }
+
+    .worker-card-role,
+    .worker-card-mail,
+    .worker-card-nm {
+        font-size: 12px;
+    }
+
+    footer {
+        height: 60px;
+        font-size: 1rem;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 1023px) and (orientation: landscape) {
+    aside {
+        max-height: 250px;
+    }
+
+    .zone-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    form {
+        top: 1%;
+        max-height: 98vh;
+    }
+}
+
+@media (max-width: 480px) {
+    header ul {
+        gap: 10px;
+    }
+
+    header ul a {
+        font-size: 14px;
+    }
+
+    aside h1 {
+        font-size: 20px;
+    }
+
+    .add-worker-unass {
+        font-size: 13px;
+        height: 40px;
+    }
+
+    .zone h3 {
+        font-size: 14px;
+    }
+
+    .zone-limit {
+        font-size: 0.7rem;
+    }
+
+    form > div > label {
+        font-size: 14px;
+        padding-top: 15px;
+    }
+
+    .employer-cards {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .employee-cpec {
+        align-items: center;
+    }
+}
 
 form{
     text-align: center;
@@ -297,27 +579,35 @@ form > div > select{
     border-radius: 30px;
     text-align: center;
     font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
 }
 
 form > div > label{
     padding-top: 20px;
+    font-weight: 600;
 }
 
 .botton-form{
     display: flex;
     flex-direction: row;
     gap: 0.8rem;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .botton-form button{
     width: auto;
     height: 40px;
-    padding: 5px;
+    padding: 5px 15px;
     text-align: center;
     border-radius: 10px;
     background-color: #6782a7;
     color: #fff;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .botton-form button:hover{
@@ -334,11 +624,16 @@ form > div > label{
     padding: 0;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .exp-block{
     width: 100%;
-    padding-right:100px;
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    position: relative;
 }
 
 .exp-block input{
@@ -347,16 +642,35 @@ form > div > label{
     border-radius: 30px;
     text-align: center;
     font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    margin-bottom: 10px;
 }
 
 .exp-block textarea{
     width: 80%;
     height: 80px;
-    border-radius: 30px;
+    border-radius: 20px;
     text-align: center;
     font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    resize: vertical;
 }
 
+.remove-exp{
+    background: #ef4444;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
 .modal-overlay{
     position: fixed;
@@ -402,32 +716,4 @@ form > div > label{
     font-size: 14px;
     color: #555;
     margin: 3px 0;
-}
-.zone-worker {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #f3f4f6;
-  border-radius: 10px;
-  padding: 5px 10px;
-  margin: 5px 0;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.zone-worker:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.zone-worker img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.zone-worker .worker-name {
-  font-weight: bold;
-  font-size: 14px;
 }
