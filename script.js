@@ -63,7 +63,7 @@ function validateForm(name, email, phone) {
   return true;
 }
 
-/*
+
 function canAssignToZone(workerRole, zoneName) {
   switch(zoneName) {
     case 'Réception':
@@ -79,7 +79,7 @@ function canAssignToZone(workerRole, zoneName) {
   }
 }
 
-
+/*
 function isZoneFull(zoneElement) {
   const currentWorkers = zoneElement.querySelectorAll('.employer-cards').length;
   const zoneName = zoneElement.querySelector('h3').textContent;
