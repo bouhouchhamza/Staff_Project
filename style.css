@@ -179,7 +179,7 @@ aside{
     transform: scale(1.05);
 }
 
-.required-zone:empty {
+.required-empty {
     background-color: #fee2e2 !important;
     border: 2px dashed #ef4444 !important;
     animation: pulse-empty 2s infinite;
