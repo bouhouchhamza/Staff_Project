@@ -124,7 +124,6 @@ function updateZonesAppearance() {
       const max = limits[zoneName] || 3;
       limitElement.textContent = `${currentWorkers} / ${max}`;
       
-      // Capacité
       if (currentWorkers >= max) {
         zone.classList.add('at-capacity');
       }
