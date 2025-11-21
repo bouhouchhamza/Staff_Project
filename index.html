@@ -39,8 +39,21 @@
               id="image-preview"
               placeholder="entrer votre image url"
             />
+            <img
+              id="photo-preview"
+              src="https://placehold.co/100x100/3B82F6/FFFFFF?text=WS"
+              alt="Aperçu"
+              style="
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-top: 10px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            />
           </div>
-
           <div>
             <label for="name">Name</label>
             <input
@@ -110,13 +123,11 @@
         </div>
 
         <section id="zone-section" class="zone-section">
-
           <div class="zone" data-allowed-roles="all" data-max="3">
             <h3>Salle de conférence</h3>
             <div class="zone-limit">0 / 3</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-
 
           <div
             class="zone required-zone"
@@ -128,7 +139,6 @@
             <button class="assign-worker" type="button">+</button>
           </div>
 
-
           <div
             class="zone required-zone"
             data-allowed-roles="Technicien IT"
@@ -139,7 +149,6 @@
             <button class="assign-worker" type="button">+</button>
           </div>
 
-
           <div
             class="zone required-zone"
             data-allowed-roles="Agent de sécurité"
@@ -149,7 +158,6 @@
             <div class="zone-limit">0 / 2</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-
 
           <div class="zone" data-allowed-roles="all" data-max="4">
             <h3>Salle du personnel</h3>
