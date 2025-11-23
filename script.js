@@ -275,29 +275,35 @@ document.querySelectorAll(".assign-worker").forEach((button) => {
         const zone = this.closest(".zone");
         const zoneName = zone.querySelector("h3").textContent;
 
-        const eligibleWorkers = allWorkers.filter((worker) =>
-            canAssignToZone(worker.worker_role, zoneName)
+        const workersAlreadyInZone = Array.from(
+            zone.querySelectorAll("[data-worker-id]")
+        ).map(el => el.dataset.workerId);
+
+        const eligibleWorkers = allWorkers.filter(
+            worker =>
+                canAssignToZone(worker.worker_role, zoneName) &&
+                !workersAlreadyInZone.includes(worker.id)
         );
 
         if (eligibleWorkers.length === 0) {
             alert("Aucun employé éligible pour cette zone");
             return;
         }
-
+        for(const worker of eligibleWorkers){
         if (isZoneFull(zone)) {
             alert("Cette zone est pleine!");
             return;
         }
 
-        const workerToAssign = eligibleWorkers[0];
         const workerCard = document.querySelector(
-            `[data-worker-id="${workerToAssign.id}"]`
+            `[data-worker-id="${worker.id}"]`
         );
 
         if (workerCard) {
             zone.appendChild(workerCard);
-            updateZonesAppearance();
         }
+        }
+        updateZonesAppearance();
     });
 });
 
