@@ -39,7 +39,12 @@
               id="image-preview"
               placeholder="entrer votre image url"
             >
-            <img class="im-pr" id="photo-preview" src="https://placehold.co/100x100/3B82F6/FFFFFF?text=WS" alt="Aperçu">
+            <img
+              class="im-pr"
+              id="photo-preview"
+              src="https://placehold.co/100x100/3B82F6/FFFFFF?text=WS"
+              alt="Aperçu"
+            >
           </div>
           <div>
             <label for="name">Name</label>
@@ -82,7 +87,6 @@
               required
             >
           </div>
-
           <div id="experience-list">
             <h3>Entrer votre experience</h3>
           </div>
@@ -95,6 +99,14 @@
             <button type="button" id="close-formule">Fermer</button>
           </div>
         </form>
+        <div class="modal-overlay" id="choose-worker-modal">
+          <div class="worker-modal">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3>Choisir un Employé</h3>
+            <div class="worker-list" id="workers-list">
+            </div>
+          </div>
+        </div>
         <div class="modal-overlay" id="modal-overlay">
           <div class="worker-modal" id="worker-card-div">
             <div class="profile-details">
@@ -151,7 +163,6 @@
             <div class="zone-limit">0 / 4</div>
             <button class="assign-worker" type="button">+</button>
           </div>
-
           <div
             class="zone required-zone"
             data-allowed-roles="all except Nettoyage"

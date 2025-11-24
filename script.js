@@ -174,7 +174,6 @@ function showModal(worker_info, experience) {
         });
         experienceHTML += "</ul>";
     }
-
     worker_card_div.innerHTML = `
         <img src="${worker_info.worker_img}" class="worker-card-img" />
         <p class="worker-card-name">${worker_info.Name}</p>
@@ -283,30 +282,65 @@ document.querySelectorAll(".assign-worker").forEach((button) => {
             worker =>
                 canAssignToZone(worker.worker_role, zoneName) &&
                 !workersAlreadyInZone.includes(worker.id)
-        );
+        )
 
         if (eligibleWorkers.length === 0) {
             alert("Aucun employé éligible pour cette zone");
             return;
         }
-        for(const worker of eligibleWorkers){
-        if (isZoneFull(zone)) {
-            alert("Cette zone est pleine!");
-            return;
-        }
+        openWorkerSelectModal(eligibleWorkers, zone);
+    //     for(const worker of eligibleWorkers){
+    //     if (isZoneFull(zone)) {
+    //         alert("Cette zone est pleine!");
+    //         return;
+    //     }
 
-        const workerCard = document.querySelector(
-            `[data-worker-id="${worker.id}"]`
-        );
+    //     const workerCard = document.querySelector(
+    //         `[data-worker-id="${worker.id}"]`
+    //     );
 
-        if (workerCard) {
-            zone.appendChild(workerCard);
-        }
-        }
-        updateZonesAppearance();
-    });
+    //     if (workerCard) {
+    //         zone.appendChild(workerCard);
+    //     }
+    //     }
+    //     updateZonesAppearance();
+     });
 });
+const modal = document.getElementById("choose-worker-modal");
+const closeModalBtn = document.getElementById("close-modal");
+const workersList = document.getElementById("workers-list");
 
+function openWorkerSelectModal(eligibleWorkers, zone) {
+    workersList.innerHTML = "";
+
+    eligibleWorkers.forEach(worker => {
+        const btn = document.createElement("button");
+        btn.textContent = worker.Name;
+        btn.className = "worker-choice-btn";
+
+        btn.addEventListener("click", () => {
+            if (isZoneFull(zone)) {
+                alert("Cette zone est pleine!");
+                return;
+            }
+
+            const workerCard = document.querySelector(`[data-worker-id="${worker.id}"]`);
+            if (workerCard) zone.appendChild(workerCard);
+
+            modal.style.display = "none";
+            updateZonesAppearance();
+        });
+
+        workersList.appendChild(btn);
+    });
+
+    modal.style.display = "flex";
+}
+
+
+closeModalBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
 modal_overlay.addEventListener("click", (e) => {
     if (e.target === modal_overlay) modal_overlay.style.display = "none";
 });
@@ -314,5 +348,6 @@ modal_overlay.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") modal_overlay.style.display = "none";
 });
+
 
 updateZonesAppearance();

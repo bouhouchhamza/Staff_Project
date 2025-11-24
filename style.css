@@ -249,8 +249,6 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     height: 80px;
     font-size: 1.2rem;
@@ -557,11 +555,13 @@ form{
     position: absolute;
     z-index: 999;
     right: 30%;
-    top: 0;
+    top: 5%;
     width: 40%;
-    height: auto;
+    height:80%;
     padding: 30px;
     display: none;
+    overflow-y: auto;
+    scrollbar-width:none;
 }
 
 form div{
@@ -728,3 +728,64 @@ form > div > label{
     margin-left: auto; 
     margin-right: auto;
 }
+#choose-worker-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+#choose-worker-modal.active,
+#choose-worker-modal[style*="display: flex"] {
+    display: flex;
+}
+.worker-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+}
+.close-modal:hover {
+    color: #000;
+}
+.worker-modal h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.worker-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.worker-choice-btn {
+    padding: 10px 15px;
+    border: none;
+    background-color: #3b82f6;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.worker-choice-btn:hover {
+    background-color: #2563eb;
+}
+
